@@ -20,7 +20,7 @@
             android:rotation="270">
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/colorTextView1"
                 android:layout_width="match_parent"
                 android:layout_height="90dp"
                 android:layout_weight="1"
@@ -33,7 +33,7 @@
                 android:text="TextView" />
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/colorTextView2"
                 android:layout_width="match_parent"
                 android:layout_height="90dp"
                 android:layout_weight="1"
@@ -46,7 +46,7 @@
                 android:text="TextView" />
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/colorTextView3"
                 android:layout_width="match_parent"
                 android:layout_height="90dp"
                 android:layout_weight="1"
@@ -59,7 +59,7 @@
                 android:text="TextView" />
 
             <TextView
-                android:id="@+id/textView4"
+                android:id="@+id/colorTextView4"
                 android:layout_width="match_parent"
                 android:layout_height="95dp"
                 android:layout_weight="1"
@@ -72,7 +72,7 @@
                 android:text="TextView" />
 
             <TextView
-                android:id="@+id/textView5"
+                android:id="@+id/colorTextView5"
                 android:layout_width="match_parent"
                 android:layout_height="90dp"
                 android:layout_weight="1"
@@ -97,7 +97,7 @@
                 android:orientation="horizontal">
 
                 <ToggleButton
-                    android:id="@+id/toggleButton2"
+                    android:id="@+id/lockButton1"
                     android:layout_width="90dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -106,7 +106,7 @@
                     android:textOn="Locked" />
 
                 <ToggleButton
-                    android:id="@+id/toggleButton3"
+                    android:id="@+id/lockButton2"
                     android:layout_width="90dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -115,7 +115,7 @@
                     android:textOn="Locked" />
 
                 <ToggleButton
-                    android:id="@+id/toggleButton4"
+                    android:id="@+id/lockButton3"
                     android:layout_width="90dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -124,7 +124,7 @@
                     android:textOn="Locked" />
 
                 <ToggleButton
-                    android:id="@+id/toggleButton5"
+                    android:id="@+id/lockButton4"
                     android:layout_width="90dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -133,7 +133,7 @@
                     android:textOn="Locked" />
 
                 <ToggleButton
-                    android:id="@+id/toggleButton6"
+                    android:id="@+id/lockButton5"
                     android:layout_width="90dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -147,17 +147,17 @@
                 android:layout_height="match_parent" />
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/newPaletteButton"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
                 android:textSize="18sp"
                 android:layout_marginLeft="50dp"
                 android:layout_marginTop="35dp"
                 android:layout_marginRight="50dp"
-                android:text="N E W    P A L L E T T E" />
+                android:text="N E W    P A L E T T E" />
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/savePaletteButton"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
                 android:textSize="18sp"
@@ -174,7 +174,7 @@
                 android:layout_marginLeft="27dp">
 
                 <RadioButton
-                    android:id="@+id/radioButton6"
+                    android:id="@+id/randomRadioButton"
                     android:checked="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -184,7 +184,7 @@
                     android:text="Random" />
 
                 <RadioButton
-                    android:id="@+id/radioButton7"
+                    android:id="@+id/warmRadioButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="20sp"
@@ -193,7 +193,7 @@
                     android:text="Warm" />
 
                 <RadioButton
-                    android:id="@+id/radioButton8"
+                    android:id="@+id/coolRadioButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="20sp"
@@ -203,7 +203,7 @@
             </RadioGroup>
 
             <Button
-                android:id="@+id/button3"
+                android:id="@+id/favoritesButton"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:layout_marginTop="10dp"
