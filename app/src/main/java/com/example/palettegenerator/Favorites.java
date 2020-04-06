@@ -1,7 +1,9 @@
 package com.example.palettegenerator;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -45,17 +47,15 @@ public class Favorites extends AppCompatActivity {
 
     private void loadFavorites() {
         Map<String,?> keys = sharedPreferences.getAll();
-
         for(Map.Entry<String,?> entry : keys.entrySet()){
-            System.out.println(entry.getValue().toString());
             addFavorite(entry);
         }
 
     }
 
-    private void addFavorite(Map.Entry<String, ?> favorite) {
-        List<String> colorHexCodes = Arrays.asList(favorite.getValue().toString().split("\\s*,\\s*"));
-        LinearLayout horizontalFavoriteLayout = new LinearLayout(this);
+    private void addFavorite(final Map.Entry<String, ?> favorite) {
+        final List<String> colorHexCodes = Arrays.asList(favorite.getValue().toString().split("\\s*,\\s*"));
+        final LinearLayout horizontalFavoriteLayout = new LinearLayout(this);
         horizontalFavoriteLayout.setOrientation(LinearLayout.HORIZONTAL);
         horizontalFavoriteLayout.setTag(favorite.getKey());
         horizontalFavoriteLayout.setBackgroundColor(Color.parseColor("#DEE3E6"));
@@ -79,41 +79,37 @@ public class Favorites extends AppCompatActivity {
                 1f);
         textViewParams.setMargins(0, getPixels(10), 0, getPixels(10));
 
-        /*
-        Button viewButton = new Button(this);
-        viewButton.setText("View");
-        viewButton.setTextSize(12);
-        viewButton.setGravity(Gravity.CENTER);
-        viewButton.setLayoutParams(buttonParams);
-        horizontalFavoriteLayout.addView(viewButton);
-        */
-
         TextView textView1 = new TextView(this);
         textView1.setBackgroundColor(Color.parseColor(colorHexCodes.get(0)));
+        textView1.setText(colorHexCodes.get(0));
         textView1.setLayoutParams(textViewParams);
         textView1.setGravity(Gravity.CENTER);
         horizontalFavoriteLayout.addView(textView1);
 
         TextView textView2 = new TextView(this);
         textView2.setBackgroundColor(Color.parseColor(colorHexCodes.get(1)));
+        textView2.setText(colorHexCodes.get(1));
         textView2.setLayoutParams(textViewParams);
         textView2.setGravity(Gravity.CENTER);
         horizontalFavoriteLayout.addView(textView2);
 
         TextView textView3 = new TextView(this);
         textView3.setBackgroundColor(Color.parseColor(colorHexCodes.get(2)));
+        textView3.setText(colorHexCodes.get(2));
         textView3.setLayoutParams(textViewParams);
         textView3.setGravity(Gravity.CENTER);
         horizontalFavoriteLayout.addView(textView3);
 
         TextView textView4 = new TextView(this);
         textView4.setBackgroundColor(Color.parseColor(colorHexCodes.get(3)));
+        textView4.setText(colorHexCodes.get(3));
         textView4.setLayoutParams(textViewParams);
         textView4.setGravity(Gravity.CENTER);
         horizontalFavoriteLayout.addView(textView4);
 
         TextView textView5 = new TextView(this);
         textView5.setBackgroundColor(Color.parseColor(colorHexCodes.get(4)));
+        textView5.setText(colorHexCodes.get(4));
         textView5.setLayoutParams(textViewParams);
         textView5.setGravity(Gravity.CENTER);
         horizontalFavoriteLayout.addView(textView5);
@@ -126,6 +122,44 @@ public class Favorites extends AppCompatActivity {
         horizontalFavoriteLayout.addView(deleteButton);
 
         verticalFavoritesLayout.addView(horizontalFavoriteLayout);
+
+        /*
+        ============================================================================================
+        ======================================== LISTENERS =========================================
+        ============================================================================================
+         */
+
+        deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                userConfirmDeletion(horizontalFavoriteLayout, favorite.getKey());
+            }
+        });
+    }
+
+    // Gnarly passing final variables around but hey what can ya do
+    public void userConfirmDeletion(final LinearLayout horizontalFavoriteLayout, final String key) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                deleteFavorite(horizontalFavoriteLayout, key);
+            }
+        });
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                // User cancelled the dialog
+            }
+        });
+        builder.setMessage("Are you sure you want to delete this palette?");
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
+    public void deleteFavorite(LinearLayout horizontalFavoriteLayout, String key) {
+        horizontalFavoriteLayout.setVisibility(View.GONE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.remove(key);
+        editor.apply();
     }
 
     /**
@@ -138,3 +172,4 @@ public class Favorites extends AppCompatActivity {
         return (int) (dp * scale + 0.5f);
     }
 }
+
