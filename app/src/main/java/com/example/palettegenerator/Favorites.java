@@ -4,13 +4,11 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
-import android.view.ViewParent;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TableLayout;
@@ -45,15 +43,24 @@ public class Favorites extends AppCompatActivity {
         });
     }
 
+    /**
+     * Load favorites.
+     * Iterate over sharedPreferences favorites call method to display them.
+     */
     private void loadFavorites() {
         Map<String,?> keys = sharedPreferences.getAll();
         for(Map.Entry<String,?> entry : keys.entrySet()){
-            addFavorite(entry);
+            displayFavorite(entry);
         }
 
     }
 
-    private void addFavorite(final Map.Entry<String, ?> favorite) {
+    /**
+     * Display favorite.
+     * Creates views and displays the palette data in sharedPreferences.
+     * @param favorite Map.Entry<String, ?>
+     */
+    private void displayFavorite(final Map.Entry<String, ?> favorite) {
         final List<String> colorHexCodes = Arrays.asList(favorite.getValue().toString().split("\\s*,\\s*"));
         final LinearLayout horizontalFavoriteLayout = new LinearLayout(this);
         horizontalFavoriteLayout.setOrientation(LinearLayout.HORIZONTAL);
@@ -137,8 +144,14 @@ public class Favorites extends AppCompatActivity {
         });
     }
 
-    // Gnarly passing final variables around but hey what can ya do
+    /**
+     * Confirm user deletion.
+     * Alert dialog popup.
+     * @param horizontalFavoriteLayout favorite entry view
+     * @param key sharedPreferences entry key
+     */
     public void userConfirmDeletion(final LinearLayout horizontalFavoriteLayout, final String key) {
+        // Gnarly passing final variables around but hey what can ya do
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
@@ -155,6 +168,12 @@ public class Favorites extends AppCompatActivity {
         dialog.show();
     }
 
+    /**
+     * Delete favorite.
+     * Remove favorite entry views and remove entry from sharedPreferences.
+     * @param horizontalFavoriteLayout favorite entry view
+     * @param key sharedPreferences entry key
+     */
     public void deleteFavorite(LinearLayout horizontalFavoriteLayout, String key) {
         horizontalFavoriteLayout.setVisibility(View.GONE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -164,8 +183,8 @@ public class Favorites extends AppCompatActivity {
 
     /**
      * Convert dp to pixels. Utility function.
-     * @param dp
-     * @return int
+     * @param dp int
+     * @return pixels int
      */
     private int getPixels(int dp) {
         final float scale = getResources().getDisplayMetrics().density;

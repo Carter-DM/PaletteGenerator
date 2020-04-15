@@ -1,3 +1,12 @@
 <resources>
-    <string name="app_name">PaletteGenerator</string>
+    <string name="app_name">Palette Generator</string>
+    <string name="unlocked">Unlocked</string>
+    <string name="locked">Locked</string>
+    <string name="newPalette">NEW PALETTE</string>
+    <string name="savePalette">SAVE PALETTE</string>
+    <string name="random">Random</string>
+    <string name="warm">Warm</string>
+    <string name="cool">Cool</string>
+    <string name="yourFavorites">YOUR FAVORITES</string>
+    <string name="back">BACK</string>
 </resources>

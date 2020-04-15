@@ -2,8 +2,6 @@ package com.example.palettegenerator;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.ClipData;
-import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -100,6 +98,9 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Set Text View Colors. Sets the main palette colors.
+     */
     private void setTextViewColors() {
         int colorTextView1ColorInt;
         int colorTextView2ColorInt;
@@ -155,6 +156,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Generates random HSL(V) color.
+     * @return int color
+     */
     private int generateRandomColor() {
         Random random = new Random();
         final float hue = random.nextFloat() * 360;
@@ -163,9 +168,12 @@ public class MainActivity extends AppCompatActivity {
         return Color.HSVToColor(new float[] {hue, saturation, luminance});
     }
 
+    /**
+     * Generates random warm HSL(V) color.
+     * Hue is in the range of 0-60 || 300-360 (Just eyeballed the values)
+     * @return int color
+     */
     private int generateWarmColor() {
-        // Just eyeballing the color wheel for these values
-        // 0 - 60 || 300 - 360
         Random random = new Random();
         float hue = random.nextBoolean() ? random.nextFloat() * 60 : 300 + random.nextFloat() * (360 - 300);
         final float saturation = random.nextFloat();
@@ -173,9 +181,12 @@ public class MainActivity extends AppCompatActivity {
         return Color.HSVToColor(new float[] {hue, saturation, luminance});
     }
 
+    /**
+     * Generates random cool HSL(V) color.
+     * Hue is in the range of 80-300 (Just eyeballed the values)
+     * @return int color
+     */
     private int generateCoolColor() {
-        // Just eyeballing the color wheel for these values
-        // 80 - 300
         Random random = new Random();
         final float hue = 80 + random.nextFloat() * (300 - 80);
         final float saturation = random.nextFloat();
@@ -183,16 +194,22 @@ public class MainActivity extends AppCompatActivity {
         return Color.HSVToColor(new float[] {hue, saturation, luminance});
     }
 
+    /**
+     * Coverts HSL(V) int to Hex string. Utility function.
+     * @param intColor HSL(V) int
+     * @return String hex
+     */
     private String getHexValue(int intColor) {
         return String.format("#%06X", (0xFFFFFF & intColor));
     }
 
     /**
-     * Save color hex codes to sharedPreferences. Id is based on length of sharedPreferences.
+     * Save color hex codes to sharedPreferences.
+     * Id is based on length of sharedPreferences.
      */
     private void saveNewFavorite() {
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        int idNum = sharedPreferences.getAll().size();
+        int idNum = sharedPreferences.getAll().size()+1;
         String colorHexCodes =
                 colorTextView1.getText().toString() + ", " +
                         colorTextView2.getText().toString() + ", " +
@@ -210,6 +227,9 @@ public class MainActivity extends AppCompatActivity {
         toast.show();
     }
 
+    /**
+     * Open Favorites activity.
+     */
     private void openFavorites() {
         Intent intent = new Intent(this, Favorites.class);
         startActivity(intent);

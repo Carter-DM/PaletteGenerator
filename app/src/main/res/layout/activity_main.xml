@@ -101,45 +101,40 @@
                     android:layout_width="90dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="ToggleButton"
-                    android:textOff="Unlocked"
-                    android:textOn="Locked" />
+                    android:textOff="@string/unlocked"
+                    android:textOn="@string/locked" />
 
                 <ToggleButton
                     android:id="@+id/lockButton2"
                     android:layout_width="90dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="ToggleButton"
-                    android:textOff="Unlocked"
-                    android:textOn="Locked" />
+                    android:textOff="@string/unlocked"
+                    android:textOn="@string/locked" />
 
                 <ToggleButton
                     android:id="@+id/lockButton3"
                     android:layout_width="90dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="ToggleButton"
-                    android:textOff="Unlocked"
-                    android:textOn="Locked" />
+                    android:textOff="@string/unlocked"
+                    android:textOn="@string/locked" />
 
                 <ToggleButton
                     android:id="@+id/lockButton4"
                     android:layout_width="90dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="ToggleButton"
-                    android:textOff="Unlocked"
-                    android:textOn="Locked" />
+                    android:textOff="@string/unlocked"
+                    android:textOn="@string/locked" />
 
                 <ToggleButton
                     android:id="@+id/lockButton5"
                     android:layout_width="90dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="ToggleButton"
-                    android:textOff="Unlocked"
-                    android:textOn="Locked" />
+                    android:textOff="@string/unlocked"
+                    android:textOn="@string/locked" />
             </LinearLayout>
 
             <RadioGroup
@@ -154,7 +149,7 @@
                 android:layout_marginLeft="50dp"
                 android:layout_marginTop="35dp"
                 android:layout_marginRight="50dp"
-                android:text="N E W    P A L E T T E" />
+                android:text="@string/newPalette" />
 
             <Button
                 android:id="@+id/savePaletteButton"
@@ -164,7 +159,7 @@
                 android:layout_marginLeft="50dp"
                 android:layout_marginRight="50dp"
                 android:layout_marginBottom="20dp"
-                android:text="S A V E    P A L E T T E" />
+                android:text="@string/savePalette" />
 
             <RadioGroup
                 android:layout_width="match_parent"
@@ -181,7 +176,7 @@
                     android:textSize="20sp"
                     android:textColor="#FFFFFF"
                     android:layout_margin="20dp"
-                    android:text="Random" />
+                    android:text="@string/random" />
 
                 <RadioButton
                     android:id="@+id/warmRadioButton"
@@ -190,7 +185,7 @@
                     android:textSize="20sp"
                     android:textColor="#FFFFFF"
                     android:layout_margin="20dp"
-                    android:text="Warm" />
+                    android:text="@string/warm" />
 
                 <RadioButton
                     android:id="@+id/coolRadioButton"
@@ -199,7 +194,7 @@
                     android:textSize="20sp"
                     android:textColor="#FFFFFF"
                     android:layout_margin="20dp"
-                    android:text="Cool" />
+                    android:text="@string/cool" />
             </RadioGroup>
 
             <Button
@@ -207,7 +202,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:layout_marginTop="10dp"
-                android:text="Y O U R    F A V O R I T E S" />
+                android:text="@string/yourFavorites" />
 
         </LinearLayout>
 
